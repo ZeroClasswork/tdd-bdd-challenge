@@ -7,15 +7,27 @@ const sayHello = () => {
 }
 
 const area = (w, h) => {
-  // should return the area
+  if (w >= 0 && h >= 0) {
+    return w * h
+  } else {
+    return null
+  }
 }
 
 const perimeter = (w, h) => {
-  // should return the perimeter
+  if (w >= 0 && h >= 0) {
+    return 2 * w + 2 * h
+  } else {
+    return null
+  }
 }
 
 const circleArea = r => {
-  // should return the area of the circle
+  if (r >= 0) {
+    return Math.PI * r
+  } else {
+    return null
+  }
 }
 
 // ========================================================
@@ -36,19 +48,34 @@ const createItem = (name, price) => {
 }
 
 const getShoppingCart = () => {
-  // should return the current state of shopping cart
+  return shoppingCart
 }
 
 const addItemToCart = (item) => {
-  // should add item to shopping cart
+  for (cartItem of shoppingCart) {
+    if (cartItem.name === item.name) {
+      cartItem.quantity += item.quantity
+      return
+    }
+  }
+  shoppingCart.push(item)
 }
 
 const getNumItemsInCart = () => {
-  // should return the total quantity of items in cart
+  let total = 0
+  for (item of shoppingCart) {
+    total += item.quantity
+  }
+  return total
 }
 
 const removeItemFromCart = (item) => {
-  // should remove item from shopping cart
+  for (cartItem of shoppingCart) {
+    if (cartItem.name === item.name) {
+      shoppingCart.pop(cartItem)
+      return
+    }
+  }
 }
 
 module.exports = {
